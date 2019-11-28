@@ -12,7 +12,7 @@ public class VisiteDao {
 		Medecin unMedecin =null;
 		Visiteur unVisiteur=null;
 		
-		ResultSet reqSelection = ConnexionMySql.execReqSelection("select * from Visite where Matricule ='"+Matricule+"'");
+		ResultSet reqSelection = ConnexionMySql.execReqSelection("select * from VISITE where MATRICULE ='"+Matricule+"'");
 		try {
 			if (reqSelection.next()) {
 				// public Visite(String reference1,String date2,String commentaire3,Medecin4 unMedecin,Visiteur5 unVisiteur) 
@@ -22,7 +22,7 @@ public class VisiteDao {
 			};
 			}
 		catch(Exception e) {
-			System.out.println("erreur reqSelection.next() pour la requête - select * from Visite where Matricule ='"+Matricule+"'");
+			System.out.println("erreur reqSelection.next() pour la requête - select * from VISITE where MATRICULE ='"+Matricule+"'");
 			e.printStackTrace();
 			}
 		ConnexionMySql.fermerConnexionBd();
@@ -38,7 +38,7 @@ public class VisiteDao {
 		String codeMed= uneVisite.getUnMedecin().getCodeMed();
 		String matricule =uneVisite.getUnVisiteur().getMatricule();
 		
-		reqInsert="Insert into Visite values('"+reference+"','"+date+"','"+commentaire+"','"+codeMed+"','"+matricule+"')";
+		reqInsert="Insert into VISITE values('"+reference+"','"+date+"','"+commentaire+"','"+codeMed+"','"+matricule+"')";
 		
 		int result =ConnexionMySql.execReqMaj(reqInsert);
 		ConnexionMySql.fermerConnexionBd();
@@ -46,7 +46,7 @@ public class VisiteDao {
 	}
 	
 	public static int supprimer(String reference){
-		String requeteSuppression = "delete from Visite where Reference='"+reference+"'";
+		String requeteSuppression = "delete from VISITE where REFERENCE='"+reference+"'";
 		int result = ConnexionMySql.execReqMaj(requeteSuppression);
 		ConnexionMySql.fermerConnexionBd();
 		return result;	

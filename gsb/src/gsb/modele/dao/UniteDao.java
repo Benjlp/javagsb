@@ -9,14 +9,14 @@ public class UniteDao {
 	public static Unite rechercher(String CodeUnite) {
 		
 				Unite uneUnite= null;
-				ResultSet reqSelection = ConnexionMySql.execReqSelection("select * from Unite where CodeUnite ='"+CodeUnite+"'");
+				ResultSet reqSelection = ConnexionMySql.execReqSelection("select * from UNITE where CODEUNITE ='"+CodeUnite+"'");
 				try {
 					if (reqSelection.next()) {
 						uneUnite = new Unite(reqSelection.getString(1),reqSelection.getString(2));
 					};
 					}
 				catch(Exception e) {
-					System.out.println("erreur reqSelection.next() pour la requête - select * from CodeUnite where CodeUnite ='"+CodeUnite+"'");
+					System.out.println("erreur reqSelection.next() pour la requête - select * from CODEUNITE where CODEUNITE ='"+CodeUnite+"'");
 					e.printStackTrace();
 					}
 				ConnexionMySql.fermerConnexionBd();
@@ -28,7 +28,7 @@ public class UniteDao {
 		String code=uneUnite.getCodeUnite();
 		String nom=uneUnite.getNom();
 		
-		reqInsert="Insert into Unite values('"+code+"','"+nom+"')";
+		reqInsert="Insert into UNITE values('"+code+"','"+nom+"')";
 		
 		int result =ConnexionMySql.execReqMaj(reqInsert);
 		ConnexionMySql.fermerConnexionBd();
