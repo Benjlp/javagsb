@@ -1,5 +1,5 @@
 package gsb.vue;
-
+import gsb.*;
 import java.awt.Container;
 import java.awt.GridLayout;
 
@@ -60,6 +60,8 @@ public class JIFListeVisite extends JInternalFrame{
          pTexte.add(JLcommentaire);
          pTexte.add(JTcommentaire);
          pTexte.add(JLunMedecin);
+         pTexte.add(JTunMedecin);
+         pTexte.add(JLunVisiteur);
          pTexte.add(JTunVisiteur);
         
 		
@@ -74,7 +76,7 @@ public class JIFListeVisite extends JInternalFrame{
     
     public void remplirText(Visite uneVisite) 	
     {  // méthode qui permet de remplir les zones de texte à partir des valeurs passées en paramètres
-    	
+    
     	JTReference.setText(uneVisite.getReference());        
         JTdate.setText(uneVisite.getDate());
         JTcommentaire.setText(uneVisite.getCommentaire());
@@ -85,15 +87,13 @@ public class JIFListeVisite extends JInternalFrame{
      
       public void viderText() 	
     {  // méthode qui permet de vider les zones de texte 
-        JTcode.setText("");        
-        JTnom.setText("");
-        JTprenom.setText("");
-        JTadresse.setText("");    
-        JTcp.setText("");
-        JTville.setText("");
-        JTtelephone.setText("");
-        JTpotentiel.setText("");
-        JTspecialite.setText("");
+    	  JTReference.setText("");        
+    	  JTdate.setText("");
+    	  JTcommentaire.setText("");
+    	  JTcommentaire.setText("");    
+    	  JTunMedecin.setText("");
+    	  JTunVisiteur.setText("");
+     ;
      }
 
 

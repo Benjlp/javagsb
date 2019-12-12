@@ -7,13 +7,13 @@ public class VisiteurDao {
 
 	public static Visiteur rechercher(String Matricule){
 		Visiteur unVisiteur=null;
-		Unite uneUnite= null;
 		ResultSet reqSelection = ConnexionMySql.execReqSelection("select * from VISITEUR where MATRICULE ='"+Matricule+"'");
 		try {
 			if (reqSelection.next()) {
-				uneUnite = UniteDao.rechercher(reqSelection.getString(10));
-			//	public Visiteur(String Matricule1,String Nom2,String Prenom3,String Login4, String mdp5,String Adresse6,String Telephone7,int Prime8,Unite uneUnite9) {
-				unVisiteur = new Visiteur(reqSelection.getString(1), reqSelection.getString(2), reqSelection.getString(3),reqSelection.getString(4),reqSelection.getString(5), reqSelection.getString(6), reqSelection.getString(7),reqSelection.getString(8), reqSelection.getInt(9),uneUnite);	
+				// Matricule0, Nom1, Prenom2, Login3,  mdp4, Adresse5, Codeostal, CodeUnite8, NomUnite9) { {
+				unVisiteur = new Visiteur(reqSelection.getString(1), reqSelection.getString(2), reqSelection.getString(3),
+						reqSelection.getString(4),reqSelection.getString(5), reqSelection.getString(6), reqSelection.getString(7),
+						reqSelection.getString(8),reqSelection.getString(9),reqSelection.getString(10));
 			};
 			}
 		catch(Exception e) {
@@ -32,10 +32,12 @@ public class VisiteurDao {
 		String login=unVisiteur.getLogin();
 		String mdp=unVisiteur.getMdp();
 		String adresse=unVisiteur.getAdresse();
-		String tel=unVisiteur.getTelephone();
-		int prime=unVisiteur.getPrime();
-		String unite=unVisiteur.getUneUnite().getCodeUnite();		
-		reqInsert="Insert into VISITEUR values('"+matricule+"','"+nom+"','"+prenom+"','"+login+"','"+mdp+"','"+adresse+"','"+tel+"','"+prime+"''"+unite+"')";
+		String Cp=unVisiteur.getCodePostal();
+		String CodeUnite=unVisiteur.getCodeUnite();
+		String NomUnite=unVisiteur.getNomUnite();
+		String DateEntree=unVisiteur.getDateEntree();
+		
+		reqInsert="Insert into VISITEUR values('"+matricule+"','"+nom+"','"+prenom+"','"+login+"','"+mdp+"','"+adresse+"','"+Cp+"','"+DateEntree+"''"+NomUnite+"','"+CodeUnite+"')";
 		
 		int result =ConnexionMySql.execReqMaj(reqInsert);
 		ConnexionMySql.fermerConnexionBd();

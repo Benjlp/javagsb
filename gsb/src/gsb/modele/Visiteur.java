@@ -8,13 +8,14 @@ public class Visiteur {
 	protected String Login;
 	protected String mdp;
 	protected String Adresse;
-	protected String Telephone;
+	protected String codePostal;
 	protected String dateEntree;
-	protected int Prime;
-	protected Unite uneUnite;
+	protected String CodeUnite;
+	protected String NomUnite;
+
 
 	public Visiteur(String Matricule,String Nom,String Prenom,String Login, String mdp,
-			String Adresse,String Telephone,String DateEntree, int Prime,Unite uneUnite) {
+			String Adresse,String codePostal,String DateEntree,String CodeUnite,String NomUnite) {
 			
 		this.Matricule=Matricule;
 		this.Nom=Nom;
@@ -22,21 +23,29 @@ public class Visiteur {
 		this.Login=Login;
 		this.mdp=mdp;
 		this.Adresse=Adresse;
-		this.Telephone=Telephone;
+		this.codePostal=codePostal;
 		this.dateEntree=DateEntree;
-		this.Prime=Prime;
-		this.uneUnite=uneUnite;
+		this.CodeUnite=CodeUnite;
+		this.NomUnite=NomUnite;
 	
 	}
 
-	public Unite getUneUnite() {
-		return uneUnite;
+	public String getCodeUnite() {
+		return CodeUnite;
 	}
 
-	public void setUneUnite(Unite uneUnite) {
-		this.uneUnite = uneUnite;
+	public void setCodeUnite(String codeUnite) {
+		CodeUnite = codeUnite;
 	}
 
+	public String getNomUnite() {
+		return NomUnite;
+	}
+
+	public void setNomUnite(String nomUnite) {
+		NomUnite = nomUnite;
+	}
+	
 	public String getMatricule() {
 		return Matricule;
 	}
@@ -85,12 +94,13 @@ public class Visiteur {
 		Adresse = adresse;
 	}
 
-	public String getTelephone() {
-		return Telephone;
+	
+	public String getCodePostal() {
+		return codePostal;
 	}
 
-	public void setTelephone(String telephone) {
-		Telephone = telephone;
+	public void setCodePostal(String codePostal) {
+		this.codePostal = codePostal;
 	}
 
 	public String getDateEntree() {
@@ -99,14 +109,6 @@ public class Visiteur {
 
 	public void setDateEntree(String dateEntree) {
 		this.dateEntree = dateEntree;
-	}
-
-	public int getPrime() {
-		return Prime;
-	}
-
-	public void setPrime(int prime) {
-		Prime = prime;
 	}
 
 

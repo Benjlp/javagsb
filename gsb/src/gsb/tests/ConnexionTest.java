@@ -27,7 +27,7 @@ public class ConnexionTest {
 	public static void main(String[] args) {
 		// TODO Raccord de méthode auto-généré
 		ResultSet resultat = ConnexionMySql
-				.execReqSelection("select * from LOCALITE;");
+				.execReqSelection("select * from MEDECIN;");
 		try {
 			while (resultat.next()) {
 				System.out.println(resultat.getString(1) + "  "

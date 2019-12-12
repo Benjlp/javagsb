@@ -41,7 +41,8 @@ class VisiteurServiceTest {
 		assertNull(unVisiteurService.rechercherVisiteur(null), "Null car ref null");
 	}
 	
+	@Test
 	public final void testrechercherVisiteurMat() {
-		assertNotNull(unVisiteurService.rechercherVisiteur("test"), "Visiteur avec un matricule présent");
+		assertNotNull(unVisiteurService.rechercherVisiteur("a131"), "Visiteur avec un matricule présent");
 	}
 }

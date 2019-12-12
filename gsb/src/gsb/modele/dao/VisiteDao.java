@@ -38,7 +38,7 @@ public class VisiteDao {
 		String codeMed= uneVisite.getUnMedecin().getCodeMed();
 		String matricule =uneVisite.getUnVisiteur().getMatricule();
 		
-		reqInsert="Insert into VISITE values('"+reference+"','"+date+"','"+commentaire+"','"+codeMed+"','"+matricule+"')";
+		reqInsert="Insert into VISITE values('"+reference+"','"+date+"','"+commentaire+"','"+matricule+"','"+codeMed+"')";
 		
 		int result =ConnexionMySql.execReqMaj(reqInsert);
 		ConnexionMySql.fermerConnexionBd();

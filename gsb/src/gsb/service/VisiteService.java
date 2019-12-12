@@ -37,7 +37,7 @@ public class VisiteService {
 		try { // controle des paramètres d'entrée
 			// Si une donnée est manquante on lève une exception
 			if (reference == null || date == null ||  unMedecin == null || unVisiteur == null)
-				throw new Exception("Données obligatoires : reference, date, commentaire, unMedecin, unVisiteur");
+				throw new Exception("Données obligatoires : reference, date, unMedecin, unVisiteur");
 			
 			if (VisiteDao.rechercher(reference) != null) {
 				// Si la base de donnée contient déjà un client ayant ce code on envoie une
@@ -59,7 +59,7 @@ public class VisiteService {
 		int resultat = 0;
 		try {
 			if (reference == null) {
-				throw new Exception("Donnée obligatoire : reference");
+				throw new Exception("Donnée obligatoire : reference pour supp");
 			}
 			resultat = VisiteDao.supprimer(reference);
 		} catch (Exception e) {

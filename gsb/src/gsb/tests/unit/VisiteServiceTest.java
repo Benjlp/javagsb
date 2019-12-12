@@ -3,6 +3,7 @@
  */
 package gsb.tests.unit;
 
+
 import static org.junit.jupiter.api.Assertions.*;
 
 import javax.naming.ldap.UnsolicitedNotificationListener;
@@ -33,59 +34,56 @@ class VisiteServiceTest {
 	/**
 	 * @throws java.lang.Exception
 	 */
-	@AfterEach
+	@After
+	
 	public void tearDown() throws Exception {
 
 		if (VisiteService.rechercherVisite("test")!=null) uneVisiteService.supprimerVisite("test");
 	}
 
+
 	@Test
 	public final void testrechercherVisiteRefNull() {
-		assertNull(uneVisiteService.rechercherVisite(null), "Null car ref null");
+		assertNull(uneVisiteService.rechercherVisite(null), "recherche Null car ref null");
 	}
-	@Test
+	@Test	
 	public final void testrechercherVisiteRef() {
-		assertNotNull(uneVisiteService.rechercherVisite("V001"), "Visite avec une ref présente");
+		assertNull(uneVisiteService.rechercherVisite("V001"), "Visite avec une ref présente");
 	}
 
 	
 	@Test
 	public final void testAjouterVisiteRefNull() {
-		assertNull(uneVisiteService.AjouterVisite("null", "2002-01-20 00:00:00","", "m001","a131"), "ref null");
+		assertEquals(0,uneVisiteService.AjouterVisite(null, "2002-01-20 00:00:00","","a131", "m001"), "ref null");
  	}
 	@Test
 	public final void testAjouterVisiteDateNull() {
-		assertNull(uneVisiteService.AjouterVisite("test", null, "", "m001","a131"), "ref null");
+		assertEquals(0,uneVisiteService.AjouterVisite("test", null, "", "a131", "m001"), "ref null");
  	}
 	@Test
 	public final void testAjouterVisiteMedecinNull() {
-		assertNull(uneVisiteService.AjouterVisite("test", "2002-01-20 00:00:00", "", null, "a131"), "ref null");
+		assertEquals(0,uneVisiteService.AjouterVisite("test", "2002-01-20 00:00:00", "","a131", null), "ref null");
  	}
 	@Test
 	public final void testAjouterVisiteVisiteurNull() {
-		assertNull(uneVisiteService.AjouterVisite("test", "2002-01-20 00:00:00", "","m001", null), "ref null");
- 	}
+		assertEquals(0,uneVisiteService.AjouterVisite("test", "2002-01-20 00:00:00", "",null, "m001"), "ref null");
+		}
+
 	@Test
 	public final void testAjouterVisite() {
-		assertEquals(1, uneVisiteService.AjouterVisite("test", "2002-01-20 00:00:00", "","m001","a131"));
- 	}
-	@Test
-	public final void testAjouterVisiteEchec() {
-		assertEquals(0, uneVisiteService.AjouterVisite("test", "2002-01-20 00:00:00", "","m001","a131" ));
+		assertEquals(1,uneVisiteService.AjouterVisite("test", "2002-01-20 00:00:00", "","m001","a131" ));
 
  	}
 	
-	
-	
-	
+	@Test
 	public final void testsupprimerVisiteNull() {
-		assertNull(uneVisiteService.supprimerVisite(null));
+		assertEquals(0,uneVisiteService.supprimerVisite(null));
 	}
 	
+	@Test
 	public final void testsupprimerVisite() {
 		assertEquals(1, uneVisiteService.supprimerVisite("test"));
 	}
 	
-	// cherche un bail qui existe pas
 
 }
