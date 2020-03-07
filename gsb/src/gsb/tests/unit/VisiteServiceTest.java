@@ -34,7 +34,7 @@ class VisiteServiceTest {
 	/**
 	 * @throws java.lang.Exception
 	 */
-	@After
+	@AfterEach
 	
 	public void tearDown() throws Exception {
 

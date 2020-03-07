@@ -8,44 +8,33 @@ public class Visiteur {
 	protected String Login;
 	protected String mdp;
 	protected String Adresse;
-	protected String codePostal;
+	protected String CodePostal;
 	protected String dateEntree;
-	protected String CodeUnite;
-	protected String NomUnite;
+	protected Unite uneUnite;
 
+	public Visiteur(String Matricule, String Nom, String Prenom, String Login, String mdp, String Adresse,
+			String Telephone, String DateEntree, Unite uneUnite) {
 
-	public Visiteur(String Matricule,String Nom,String Prenom,String Login, String mdp,
-			String Adresse,String codePostal,String DateEntree,String CodeUnite,String NomUnite) {
-			
-		this.Matricule=Matricule;
-		this.Nom=Nom;
-		this.Prenom=Prenom;
-		this.Login=Login;
-		this.mdp=mdp;
-		this.Adresse=Adresse;
-		this.codePostal=codePostal;
-		this.dateEntree=DateEntree;
-		this.CodeUnite=CodeUnite;
-		this.NomUnite=NomUnite;
-	
+		this.Matricule = Matricule;
+		this.Nom = Nom;
+		this.Prenom = Prenom;
+		this.Login = Login;
+		this.mdp = mdp;
+		this.Adresse = Adresse;
+		this.CodePostal = Telephone;
+		this.dateEntree = DateEntree;
+		this.uneUnite = uneUnite;
+
 	}
 
-	public String getCodeUnite() {
-		return CodeUnite;
+	public Unite getUneUnite() {
+		return uneUnite;
 	}
 
-	public void setCodeUnite(String codeUnite) {
-		CodeUnite = codeUnite;
+	public void setUneUnite(Unite uneUnite) {
+		this.uneUnite = uneUnite;
 	}
 
-	public String getNomUnite() {
-		return NomUnite;
-	}
-
-	public void setNomUnite(String nomUnite) {
-		NomUnite = nomUnite;
-	}
-	
 	public String getMatricule() {
 		return Matricule;
 	}
@@ -94,13 +83,12 @@ public class Visiteur {
 		Adresse = adresse;
 	}
 
-	
 	public String getCodePostal() {
-		return codePostal;
+		return CodePostal;
 	}
 
-	public void setCodePostal(String codePostal) {
-		this.codePostal = codePostal;
+	public void setCodePostal(String telephone) {
+		CodePostal = telephone;
 	}
 
 	public String getDateEntree() {

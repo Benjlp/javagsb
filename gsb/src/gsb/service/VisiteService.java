@@ -25,32 +25,39 @@ public class VisiteService {
 	// (String reference,String date,String commentaire,Medecin unMedecin,Visiteur
 	// unVisiteur)7
 
-	public static int AjouterVisite(String reference, String date, String commentaire, String unMedecin, String unVisiteur) {
+	public static boolean AjouterVisite(String reference, String date, String commentaire, String unMedecin, String unVisiteur) {
 
-		Visite uneVisite;
 		Medecin unMedecin2;
 		Visiteur unVisiteur2;
-
 		
-		int resultat = 0;
+		boolean resultat = false;
 
-		try { // controle des paramètres d'entrée
-			// Si une donnée est manquante on lève une exception
-			if (reference == null || date == null ||  unMedecin == null || unVisiteur == null)
+		try { 
+			if (reference.equals("") || date.equals("") ||  unMedecin.equals("") || unVisiteur.equals("")) {
 				throw new Exception("Données obligatoires : reference, date, unMedecin, unVisiteur");
-			
-			if (VisiteDao.rechercher(reference) != null) {
-				// Si la base de donnée contient déjà un client ayant ce code on envoie une
-				// exception
+
+			}
+
+ 			if (VisiteDao.rechercher(reference) != null) {
+				
 				throw new Exception("Un contact avec le code " + reference + " existe déjà");
 			}
-			unVisiteur2=VisiteurDao.rechercher(unVisiteur);
+ 			
+ 			if(MedecinDao.rechercher(unMedecin) == null){
+				throw new Exception("Ce medecin avec le code " + unMedecin + " existe pas");
+
+ 			}
+ 			if(VisiteurDao.rechercher(unVisiteur) == null){
+				throw new Exception("Ce visiteur avec le matricule " + unVisiteur + " existe pas");
+ 			}
+ 			
+ 			unVisiteur2=VisiteurDao.rechercher(unVisiteur);
 			unMedecin2=MedecinDao.rechercher(unMedecin);
-			uneVisite = new Visite(reference, date, commentaire,unMedecin2, unVisiteur2);
-			resultat = VisiteDao.creer(uneVisite);
+			System.out.println("nom medecin" +unMedecin2.getNom());
+			System.out.println("nom visiteur"+unVisiteur2.getNom());
+			resultat = VisiteDao.creer(reference,date,commentaire,unVisiteur2.getMatricule(),unMedecin2.getCodeMed());
 		
 		}catch (Exception e) {
-			System.out.println(e.getMessage());
 		}
 		return resultat;
 	}
