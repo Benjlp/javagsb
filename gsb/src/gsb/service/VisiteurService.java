@@ -5,7 +5,8 @@ import gsb.modele.Visiteur;
 import gsb.modele.dao.VisiteurDao;
 
 public class VisiteurService {
-
+// méthode pour rechercher un visiteur en fonction d'un matricule
+	
 	public static Visiteur rechercherVisiteur(String Matricule) {
 		Visiteur UnVisiteur = null;
 		
